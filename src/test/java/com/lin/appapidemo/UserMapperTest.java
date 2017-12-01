@@ -2,6 +2,7 @@ package com.lin.appapidemo;
 
 import com.lin.appapidemo.mapper.UserMapper;
 import com.lin.appapidemo.model.User;
+import com.lin.appapidemo.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,7 @@ public class UserMapperTest {
     private UserMapper mapper;
     @Test
     public void testInsert(){
-        User user=new User("lin2","123","123","123");
+        User user=new User("lin2","123","123","123",123,1);
         int i=mapper.insert(user);
         System.out.println("hehe"+i);
         Assert.assertNotEquals(0,i);
