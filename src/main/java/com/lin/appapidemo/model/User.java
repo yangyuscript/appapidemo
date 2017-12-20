@@ -1,9 +1,7 @@
 package com.lin.appapidemo.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.Column;
@@ -37,6 +35,4 @@ public class User {
         this.credit = credit;
         this.condi = condi;
     }
-
-
 }

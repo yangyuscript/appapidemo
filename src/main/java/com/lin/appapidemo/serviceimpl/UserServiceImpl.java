@@ -1,4 +1,4 @@
-package com.lin.appapidemo.ServiceImpl;
+package com.lin.appapidemo.serviceimpl;
 
 import com.lin.appapidemo.mapper.UserMapper;
 import com.lin.appapidemo.model.User;
@@ -7,9 +7,9 @@ import com.lin.appapidemo.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -42,4 +42,10 @@ public class UserServiceImpl implements UserService{
         }
         return null;
     }
+
+    @Override
+    public List<User> findAll() {
+        return userMapper.selectAll();
+    }
+
 }

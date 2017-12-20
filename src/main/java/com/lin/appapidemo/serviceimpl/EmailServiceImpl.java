@@ -1,4 +1,4 @@
-package com.lin.appapidemo.ServiceImpl;
+package com.lin.appapidemo.serviceimpl;
 
 import com.lin.appapidemo.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;

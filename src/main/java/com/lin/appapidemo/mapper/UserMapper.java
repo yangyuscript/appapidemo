@@ -11,6 +11,8 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper extends MyMapper<User> {
     @Insert("insert into t_user (email,nickname,password,head,credit,condi) values(#{email},#{nickname},#{password},#{head},#{credit},#{condi})")
     void insertUser(User user);
+    @Select("select * from t_user where userid=#{userid}")
+    User selectById(@Param("userid") int userid);
     @Select("select * from t_user where nickname=#{nickname}")
     User selectByName(@Param("nickname") String nickname);
     @Select("select userid,email,nickname,password,head,credit,condi from t_user where email=#{email}")

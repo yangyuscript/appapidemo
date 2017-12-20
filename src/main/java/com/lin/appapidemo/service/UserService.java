@@ -4,6 +4,7 @@ import com.lin.appapidemo.model.User;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 public interface UserService {
     public void addUser(User user);
@@ -22,4 +23,11 @@ public interface UserService {
      * @return
      */
     public User checkEmailAndPassword(String email,String password) throws UnsupportedEncodingException, NoSuchAlgorithmException;
+    /**
+     *获得所有用户信息
+     *@params:
+     *@return:List
+     *@date: 18:24 2017/12/11
+     **/
+    public List<User> findAll();
 }
