@@ -39,5 +39,4 @@ public class Book {
         this.condi = condi;
         this.time = time;
     }
-
 }

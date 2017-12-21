@@ -9,5 +9,5 @@ public interface BookService {
     void deleteBook(int bid);
     void updateBook(Book book);
     Book getByBid(int bid);
-    List<Book> findAll();
+    List<Book> findAllWithTerms(String bookname,int condi,String time);
 }
