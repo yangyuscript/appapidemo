@@ -29,7 +29,7 @@ public class BookServiceImplTest {
      */
     @Test
     public void testAddBook() throws Exception {
-        bookService.addBook(new Book(31,"testbook2","test2.jpg","test2",1, DateTimeUtil.getDate()));
+        bookService.addBook(new Book(31,1,"testbook2","test2.jpg","test2",1, DateTimeUtil.getDate()));
     }
 
     /**
@@ -37,7 +37,7 @@ public class BookServiceImplTest {
      */
     @Test
     public void testDeleteBook() throws Exception {
-
+        
     }
 
     /**
@@ -61,7 +61,7 @@ public class BookServiceImplTest {
      */
     @Test
     public void testFindAll() throws Exception {
-        System.out.println(bookService.findAllWithTerms(null,2,"9").toString());
+        System.out.println(bookService.findAllWithTerms(null,1,1,null).toString());
     }
 
 

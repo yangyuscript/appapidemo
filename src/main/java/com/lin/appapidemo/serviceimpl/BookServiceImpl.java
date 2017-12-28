@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public List<Book> findAllWithTerms(String bookname,int condi,String time) {
-        return bookMapper.selectAllWithTerms(bookname,condi,time);
+    public List<Book> findAllWithTerms(String bookname,int btid,int condi,String time) {
+        return bookMapper.selectAllWithTerms(bookname,btid,condi,time);
     }
 }

@@ -24,12 +24,17 @@ public interface BookMapper extends MyMapper<Book>{
     @Results({
             @Result(id=true,column="bid",property = "bid"),
             @Result(column = "userid",property = "userid"),
+            @Result(column = "btid",property = "btid"),
             @Result(column = "bookname",property = "bookname"),
             @Result(column = "bookpic",property = "bookpic"),
             @Result(column = "description",property = "description"),
             @Result(column = "condi",property = "condi"),
-            @Result(column = "time",property = "time"),@Result(column="userid",property = "user",
+            @Result(column = "time",property = "time"),
+            @Result(column="userid",property = "user",
                 one=@One(select="com.lin.appapidemo.mapper.UserMapper.selectById")
+            ),
+            @Result(column = "btid",property = "bookType",
+                one=@One(select="com.lin.appapidemo.mapper.BookTypeMapper.selectByBtid")
             )
     })
     Book getBookByBid(@Param("bid") int bid);
@@ -44,21 +49,27 @@ public interface BookMapper extends MyMapper<Book>{
             "select * from t_book"+
             " <where> "+
             " <if test=\"bookname !=null\">bookname like concat('%',concat(#{bookname},'%'))</if>"+
-            " <if test=\"condi != 2\">condi = #{condi}</if>"+
-            " <if test=\"time !=null\">time like concat('%',concat(#{time},'%'))</if>"+
+            " <if test=\"btid != 0\">and btid = #{btid}</if>"+
+            " <if test=\"condi != 2\">and condi = #{condi}</if>"+
+            " <if test=\"time !=null\">and time like concat('%',concat(#{time},'%'))</if>"+
             " </where> "+
             " </script> "
             )
     @Results({
             @Result(id=true,column="bid",property = "bid"),
             @Result(column = "userid",property = "userid"),
+            @Result(column = "btid",property = "btid"),
             @Result(column = "bookname",property = "bookname"),
             @Result(column = "bookpic",property = "bookpic"),
             @Result(column = "description",property = "description"),
             @Result(column = "condi",property = "condi"),
-            @Result(column = "time",property = "time"),@Result(column="userid",property = "user",
+            @Result(column = "time",property = "time"),
+            @Result(column="userid",property = "user",
                 one=@One(select="com.lin.appapidemo.mapper.UserMapper.selectById")
+            ),
+            @Result(column = "btid",property = "bookType",
+                    one=@One(select="com.lin.appapidemo.mapper.BookTypeMapper.selectByBtid")
             )
     })
-    List<Book> selectAllWithTerms(@Param("bookname") String bookname,@Param("condi") int condi,@Param("time") String time);
+    List<Book> selectAllWithTerms(@Param("bookname") String bookname,@Param("btid") int btid,@Param("condi") int condi,@Param("time") String time);
 }

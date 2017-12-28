@@ -9,5 +9,11 @@ public interface BookService {
     void deleteBook(int bid);
     void updateBook(Book book);
     Book getByBid(int bid);
-    List<Book> findAllWithTerms(String bookname,int condi,String time);
+    /**
+     *根据书名、书籍种类、状态、发布时间模糊查找书籍
+     *@params:bookname,btid,condi,time
+     *@return:List<Book>
+     *@date: 10:09 2017/12/28
+     **/
+    List<Book> findAllWithTerms(String bookname,int btid,int condi,String time);
 }
