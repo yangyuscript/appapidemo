@@ -27,6 +27,8 @@ public class Borrowrecord {
     private int sid;
     @Column(name = "time")
     private String time;
+    @Column(name = "backtime")
+    private String backtime;
     @Column(name = "inttime")
     private String inttime;
     @Transient
@@ -36,12 +38,13 @@ public class Borrowrecord {
     @Transient
     private Subalbum subalbum;
 
-    public Borrowrecord(int rid, String raccount, int aid, int sid, String time, String inttime) {
+    public Borrowrecord(int rid, String raccount, int aid, int sid, String time, String backtime,String inttime) {
         this.rid = rid;
         this.raccount = raccount;
         this.aid = aid;
         this.sid = sid;
         this.time = time;
+        this.backtime = backtime;
         this.inttime = inttime;
     }
 }

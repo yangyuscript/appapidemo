@@ -46,7 +46,7 @@ public class UserMapperTest {
         //readerMapper.insert(new Reader("B14041526","123","林光翔","男",DateTimeUtil.getDate(),0));
         //albumMapper.insert(new Album("测试书名","测试作者","工业出版社",DateTimeUtil.getDate(),0,"测试描述",DateTimeUtil.getDate()));
         //subalbumMapper.insert(new Subalbum(1,DateTimeUtil.getDateNumber(),0,DateTimeUtil.getDate()));
-        borrowrecordMapper.insert(new Borrowrecord(1,"B14041526",1,1,DateTimeUtil.getDate(),DateTimeUtil.getDateNumber()));
+        //borrowrecordMapper.insert(new Borrowrecord(1,"B14041526",1,1,DateTimeUtil.getDate(),DateTimeUtil.getDateNumber()));
     }
     @Test
     public void testSelect(){

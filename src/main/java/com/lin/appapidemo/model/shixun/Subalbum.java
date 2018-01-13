@@ -18,7 +18,7 @@ public class Subalbum {
     @Column(name = "sid")
     private int sid;
     @Column(name = "aid")
-    private int adi;
+    private int aid;
     @Column(name = "number")
     private String number;
     @Column(name = "condi")
@@ -28,8 +28,8 @@ public class Subalbum {
     @Transient
     private Album album;
 
-    public Subalbum(int adi, String number, int condi, String time) {
-        this.adi = adi;
+    public Subalbum(int aid, String number, int condi, String time) {
+        this.aid = aid;
         this.number = number;
         this.condi = condi;
         this.time = time;

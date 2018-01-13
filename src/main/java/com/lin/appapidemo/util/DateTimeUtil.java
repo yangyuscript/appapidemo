@@ -9,6 +9,10 @@ public class DateTimeUtil {
         return sdf.format(new Date());
     }
     public static String getDateNumber(){
-        return String.valueOf(new Date().getTime());
+        return String.valueOf(System.currentTimeMillis()+15*86400000);
+    }
+    public static String getDateAfter15(){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(new Date(System.currentTimeMillis()+15*86400000));
     }
 }

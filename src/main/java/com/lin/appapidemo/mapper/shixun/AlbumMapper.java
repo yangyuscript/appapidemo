@@ -10,6 +10,19 @@ import java.util.List;
 @Mapper
 public interface AlbumMapper extends MyMapper<Album>{
     @Select("select * from t_album where aid=#{aid}")
+    @Results({
+            @Result(id=true,column="aid",property = "aid"),
+            @Result(column = "title",property = "title"),
+            @Result(column = "author",property = "author"),
+            @Result(column = "publisher",property = "publisher"),
+            @Result(column = "publishtime",property = "publishtime"),
+            @Result(column = "num",property = "num"),
+            @Result(column = "descri",property = "descri"),
+            @Result(column = "time",property = "time"),
+            @Result(column="aid",property = "subalbums",
+                    many=@Many(select="com.lin.appapidemo.mapper.shixun.SubalbumMapper.selectByAid")
+            )
+    })
     Album selectById(@Param("aid") int aid);
     /**
      *根据图书title模糊查询，及该图书所有的副本编号

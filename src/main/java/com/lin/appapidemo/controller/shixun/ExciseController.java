@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -122,6 +123,48 @@ public class ExciseController {
             subalbumMapper.insert(new Subalbum(aid,number,0,DateTimeUtil.getDate()));
             map.put("status","ok");
         }
+        return map;
+    }
+    @RequestMapping(value = "/borrow",method = RequestMethod.POST)
+    public Map<String,Object> borrow(@RequestParam("aid")int aid,@RequestParam("rid")int rid,@RequestParam("raccount")String raccount){
+        Map<String,Object> map=new HashMap<>();
+        if(rid!=0){
+            Album album=albumMapper.selectById(aid);
+            int count=0;
+            //找到可借的那本书编号id
+            int enableborrowSAid=0;
+            for(int i=0,len=album.getSubalbums().size();i<len;i++){
+                if(album.getSubalbums().get(i).getCondi()==0){
+                    enableborrowSAid=album.getSubalbums().get(i).getSid();
+                    count++;
+                }
+            }
+            if(count!=0){
+                map.put("status","ok");
+                Borrowrecord borrowrecord=new Borrowrecord(rid,raccount,aid,enableborrowSAid,DateTimeUtil.getDate(),DateTimeUtil.getDateAfter15(),DateTimeUtil.getDateNumber());
+                borrowrecordMapper.insert(borrowrecord);
+                Subalbum subalbum=subalbumMapper.selectById(enableborrowSAid);
+                subalbum.setCondi(1);
+                subalbumMapper.updateByPrimaryKey(subalbum);
+            }else{
+                map.put("status","no");
+            }
+        }
+        return map;
+    }
+    @RequestMapping(value = "/reback",method = RequestMethod.POST)
+    public Map<String,Object> reback(@RequestParam("bid")int bid,@RequestParam("sid")int sid){
+        Map<String,Object> map=new HashMap<>();
+        if(bid!=0&&sid!=0){
+            borrowrecordMapper.delete(borrowrecordMapper.selectByPrimaryKey(bid));
+            Subalbum subalbum=subalbumMapper.selectByPrimaryKey(sid);
+            subalbum.setCondi(0);
+            subalbumMapper.updateByPrimaryKey(subalbum);
+            map.put("status","yes");
+        }else{
+            map.put("status","no");
+        }
+
         return map;
     }
 }
